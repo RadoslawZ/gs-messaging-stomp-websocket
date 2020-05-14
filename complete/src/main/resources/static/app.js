@@ -13,8 +13,10 @@ function setConnected(connected) {
 }
 
 function connect() {
-    var socket = new SockJS('/gs-guide-websocket');
+    var endpoint = '/stockinfo-websocket-endpoint' // '/gs-guide-websocket';
+    var socket = new SockJS(endpoint);
     stompClient = Stomp.over(socket);
+    setConnected(true);
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
