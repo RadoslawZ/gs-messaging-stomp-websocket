@@ -18,9 +18,8 @@ function connect() {
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/stockinfos', function (data) {
-            var parsed = JSON.parse(data.body);
-            showStockInfo(parsed.symbol, parsed.price, parsed.arrow);
+        stompClient.subscribe('/topic/greetings', function (greeting) {
+            showGreeting(JSON.parse(greeting.body).content);
         });
     });
 }
@@ -34,11 +33,11 @@ function disconnect() {
 }
 
 function sendName() {
-    stompClient.send("/app/stockinfo", {} /*, JSON.stringify({'name': $("#name").val()})*/);
+    stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
 }
 
-function showStockInfo(symbol, price, arrow) {
-    $("#greetings").append("<tr><td>" + symbol + "</td><td>" + price + "</td><td>" + arrow + "</td></tr>");
+function showGreeting(message) {
+    $("#greetings").append("<tr><td>" + message + "</td></tr>");
 }
 
 $(function () {

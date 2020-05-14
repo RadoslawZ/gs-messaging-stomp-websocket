@@ -16,7 +16,7 @@ public class StockInfoController {
 	@SendTo("/topic/stockinfos")
 	public StockInfo stockInfo() throws Exception {
 		Thread.sleep(1000); // simulated delay
-		return new StockInfo("Symbol", "Price", "Arrow Up");
+		return new StockInfo("Symbol", "Price" + Math.random(), "Arrow Up");
 	}
 
 }
