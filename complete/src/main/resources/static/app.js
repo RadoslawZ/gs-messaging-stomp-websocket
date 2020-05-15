@@ -13,10 +13,10 @@ function setConnected(connected) {
 }
 
 function connect() {
-    var endpoint = '/stockinfo-websocket-endpoint' // '/gs-guide-websocket';
+    var endpoint = '/gs-guide-websocket';
     var socket = new SockJS(endpoint);
     stompClient = Stomp.over(socket);
-    setConnected(true);
+    // setConnected(true);
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
@@ -36,7 +36,7 @@ function disconnect() {
 }
 
 function sendName() {
-    stompClient.send("/app/stockinfo", {} /*, JSON.stringify({'name': $("#name").val()})*/);
+    stompClient.send("/app/stockinfo.start", {} /*, JSON.stringify({'name': $("#name").val()})*/);
 }
 
 function showStockInfo(symbol, price, arrow) {

@@ -1,4 +1,4 @@
-package com.example.messagingstompwebsocket.controller;
+package com.example.messagingstompwebsocket.web;
 
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;

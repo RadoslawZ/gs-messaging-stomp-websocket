@@ -1,4 +1,4 @@
-package com.example.messagingstompwebsocket.controller;
+package com.example.messagingstompwebsocket.web;
 
 import com.example.messagingstompwebsocket.dto.Greeting;
 import com.example.messagingstompwebsocket.dto.HelloMessage;

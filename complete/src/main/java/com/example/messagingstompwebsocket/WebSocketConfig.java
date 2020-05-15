@@ -1,6 +1,6 @@
 package com.example.messagingstompwebsocket;
 
-import com.example.messagingstompwebsocket.controller.StockInfoWebsocketHandler;
+import com.example.messagingstompwebsocket.web.StockInfoWebsocketHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.WebSocketHandler;
