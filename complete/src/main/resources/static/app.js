@@ -40,7 +40,8 @@ function sendName() {
 }
 
 function showStockInfo(symbol, price, arrow) {
-    $("#greetings").append("<tr><td>" + symbol + "</td><td>" + price + "</td><td>" + arrow + "</td></tr>");
+    var imgSrc = 'img/arrow_' + arrow + '.png';
+    $("#greetings").append("<tr><td>" + symbol + "</td><td>" + price + "</td><td><img src=" + imgSrc + "></td></tr>");
 }
 
 $(function () {
