@@ -18,9 +18,9 @@ public class StockInfoService {
 
     public void queryStockInfoAndSendToTopic() throws Exception {
 
-        // TODO: Querying 100 times for now in order to avoid the infinite loop
+        // TODO: Extract the number of iterations (for DEMO) to an external variable
         Double previousMarketPrice = -1.0;
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             StockInfoExternal externalInfo = stockInfoGenerator.getQuote();
             Double marketPrice = (externalInfo.getBidPrice() + externalInfo.getAskPrice()) / 2.0;
             String arrow = "";

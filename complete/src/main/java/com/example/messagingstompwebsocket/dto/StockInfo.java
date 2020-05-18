@@ -6,6 +6,8 @@ public class StockInfo {
     private String price;
     private String arrow;
 
+    public StockInfo() {
+    }
 
     public StockInfo(String symbol, String price, String arrow) {
         this.symbol = symbol;
