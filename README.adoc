@@ -36,7 +36,7 @@ $ mvn clean package
 ----
 ====
 
-Run:
+Run the Spring Boot application:
 ====
 [source,json]
 ----
