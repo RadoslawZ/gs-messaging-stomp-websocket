@@ -41,8 +41,8 @@ public class StockInfoService {
         }
     }
 
-    private void sendToTopic(StockInfo stockInfo) throws Exception {
-        Thread.sleep(500); // simulated delay
+    private void sendToTopic(StockInfo stockInfo) /* throws Exception */ {
+        // Thread.sleep(500); // simulated delay
         simpMessagingTemplate.convertAndSend("/topic/stockinfos", stockInfo);
     }
 }
