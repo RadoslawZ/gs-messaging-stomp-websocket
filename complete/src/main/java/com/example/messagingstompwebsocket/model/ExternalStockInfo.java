@@ -2,7 +2,7 @@ package com.example.messagingstompwebsocket.model;
 
 import java.time.LocalDateTime;
 
-public class StockInfoExternal {
+public class ExternalStockInfo {
 
     private String symbol;
     private Double bidPrice;
@@ -10,7 +10,7 @@ public class StockInfoExternal {
     private LocalDateTime time;
 
 
-    public StockInfoExternal(String symbol, Double bidPrice, Double askPrice, LocalDateTime time) {
+    public ExternalStockInfo(String symbol, Double bidPrice, Double askPrice, LocalDateTime time) {
         this.symbol = symbol;
         this.bidPrice = bidPrice;
         this.askPrice = askPrice;

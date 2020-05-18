@@ -1,7 +1,7 @@
 package com.example.messagingstompwebsocket.service;
 
 import com.example.messagingstompwebsocket.dto.StockInfo;
-import com.example.messagingstompwebsocket.model.StockInfoExternal;
+import com.example.messagingstompwebsocket.model.ExternalStockInfo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +21,7 @@ public class StockInfoService {
         // TODO: Extract the number of iterations (for DEMO) to an external variable
         Double previousMarketPrice = -1.0;
         for (int i = 0; i < 10; i++) {
-            StockInfoExternal externalInfo = stockInfoGenerator.getQuote();
+            ExternalStockInfo externalInfo = stockInfoGenerator.getQuote();
             Double marketPrice = (externalInfo.getBidPrice() + externalInfo.getAskPrice()) / 2.0;
             String arrow = "";
             if (previousMarketPrice < 0.0) {
