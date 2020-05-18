@@ -23,20 +23,21 @@ public class StockInfoService {
         for (int i = 0; i < 10; i++) {
             ExternalStockInfo externalInfo = stockInfoGenerator.getQuote();
             Double marketPrice = (externalInfo.getBidPrice() + externalInfo.getAskPrice()) / 2.0;
-            String arrow = "";
+            // TODO: Introduce an enum for trend
+            String trend = "";
             if (previousMarketPrice < 0.0) {
-                arrow = "none";
+                trend = "none";
             } else {
                 if (marketPrice > previousMarketPrice) {
-                    arrow = "up";
+                    trend = "up";
                 } else if (marketPrice == previousMarketPrice) {
-                    arrow = "equal";
+                    trend = "equal";
                 } else if (marketPrice < previousMarketPrice) {
-                    arrow = "down";
+                    trend = "down";
                 }
             }
             previousMarketPrice = marketPrice;
-            StockInfo stockInfo = new StockInfo(externalInfo.getSymbol(), String.format("%.2f", marketPrice), arrow);
+            StockInfo stockInfo = new StockInfo(externalInfo.getSymbol(), String.format("%.2f", marketPrice), trend);
             sendToTopic(stockInfo);
         }
     }

@@ -47,7 +47,7 @@ public class StockInfoIntegrationTests {
     }
 
     @Test
-    public void getGreeting() throws Exception {
+    public void getStockInfo() throws Exception {
 
         final CountDownLatch latch = new CountDownLatch(1);
         final AtomicReference<Throwable> failure = new AtomicReference<>();

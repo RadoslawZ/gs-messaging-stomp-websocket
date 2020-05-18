@@ -8,9 +8,10 @@ import java.time.LocalDateTime;
 @Component
 public class StockInfoGenerator {
 
+    // TODO: Externalize magic string
     public static final String STOCK_SYMBOL = "SYMBOL";
 
-    /* Normally stock pricing info would be taken from an external web service */
+    /* This is for DEMO: Normally stock pricing info would be taken from an external web service */
     public ExternalStockInfo getQuote() {
         double price = getRandomBetween(0.0, 100.0);
         double spread = getRandomBetween(0.0, price);

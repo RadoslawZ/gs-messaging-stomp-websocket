@@ -22,7 +22,7 @@ function connect() {
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/stockinfos', function (data) {
             var parsed = JSON.parse(data.body);
-            showStockInfo(parsed.symbol, parsed.price, parsed.arrow);
+            showStockInfo(parsed.symbol, parsed.price, parsed.trend);
         });
     });
 }
@@ -36,7 +36,7 @@ function disconnect() {
 }
 
 function sendName() {
-    stompClient.send("/app/stockinfo.start", {} /*, JSON.stringify({'name': $("#name").val()})*/);
+    stompClient.send("/app/stockinfo.start", {});
 }
 
 function showStockInfo(symbol, price, arrow) {
