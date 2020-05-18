@@ -18,6 +18,35 @@ messages. In this guide, we use
 http://en.wikipedia.org/wiki/Streaming_Text_Oriented_Messaging_Protocol[STOMP] messaging
 with Spring to create an interactive web application.
 
+== DEMO: How to launch the demo of repetitive push of Stock Info with prices
+
+Please change to complete folder:
+====
+[source,json]
+----
+$ cd complete
+----
+====
+
+Build, test and package the application:
+====
+[source,json]
+----
+$ mvn clean package
+----
+====
+
+Run:
+====
+[source,json]
+----
+$ java -jar target/messaging-stomp-websocket-0.0.1-SNAPSHOT.jar
+----
+====
+
+Visit: http://localhost:8080/
+First click the Connect button then the Send button - it makes the server of application push notifications to the web client.
+
 == What You Will build
 
 You will build a server that accepts a message that carries a user's name. In response,
