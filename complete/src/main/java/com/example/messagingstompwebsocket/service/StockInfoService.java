@@ -1,6 +1,7 @@
 package com.example.messagingstompwebsocket.service;
 
 import com.example.messagingstompwebsocket.dto.StockInfo;
+import com.example.messagingstompwebsocket.dto.StockInfo.Trend;
 import com.example.messagingstompwebsocket.model.ExternalStockInfo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
@@ -19,31 +20,27 @@ public class StockInfoService {
     public void queryStockInfoAndSendToTopic() throws Exception {
 
         // TODO: Extract the number of iterations (for DEMO) to an external variable
-        Double previousMarketPrice = -1.0;
+        Double previousMarketPrice = null;
         for (int i = 0; i < 10; i++) {
             ExternalStockInfo externalInfo = stockInfoGenerator.getQuote();
             Double marketPrice = (externalInfo.getBidPrice() + externalInfo.getAskPrice()) / 2.0;
-            // TODO: Introduce an enum for trend
-            String trend = "";
-            if (previousMarketPrice < 0.0) {
-                trend = "none";
-            } else {
+            StockInfo.Trend trend = Trend.NONE;
+            if (previousMarketPrice != null) {
                 if (marketPrice > previousMarketPrice) {
-                    trend = "up";
+                    trend = Trend.UP;
                 } else if (marketPrice == previousMarketPrice) {
-                    trend = "equal";
+                    trend = Trend.CONSTANT;
                 } else if (marketPrice < previousMarketPrice) {
-                    trend = "down";
+                    trend = Trend.DOWN;
                 }
             }
             previousMarketPrice = marketPrice;
-            StockInfo stockInfo = new StockInfo(externalInfo.getSymbol(), String.format("%.2f", marketPrice), trend);
+            StockInfo stockInfo = new StockInfo(externalInfo.getSymbol(), String.format("%.2f", marketPrice), trend.toString());
             sendToTopic(stockInfo);
         }
     }
 
-    private void sendToTopic(StockInfo stockInfo) /* throws Exception */ {
-        // Thread.sleep(500); // simulated delay
+    private void sendToTopic(StockInfo stockInfo) {
         simpMessagingTemplate.convertAndSend("/topic/stockinfos", stockInfo);
     }
 }

@@ -22,6 +22,7 @@ function connect() {
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/stockinfos', function (data) {
             var parsed = JSON.parse(data.body);
+            console.log(">>>>>> parsed: " + parsed)
             showStockInfo(parsed.symbol, parsed.price, parsed.trend);
         });
     });
