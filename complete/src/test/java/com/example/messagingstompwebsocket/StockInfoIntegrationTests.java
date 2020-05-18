@@ -66,8 +66,7 @@ public class StockInfoIntegrationTests {
                     public void handleFrame(StompHeaders headers, Object payload) {
                         StockInfo stockInfo = (StockInfo) payload;
                         try {
-                            // TODO: Externalize magic string
-                            assertEquals("SYMBOL", stockInfo.getSymbol());
+                            assertEquals("Symbol", stockInfo.getSymbol());
                         } catch (Throwable t) {
                             failure.set(t);
                         } finally {
